@@ -1,5 +1,5 @@
 from flask import Flask
-from chat_app.core.chat import chat
+from core.chat import chat
 
 app = Flask(__name__)
 
