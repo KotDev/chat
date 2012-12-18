@@ -1,11 +1,13 @@
 from flask import Flask
+from chat_app.core.chat import chat
+
 app = Flask(__name__)
 
-@app.route("/")
-def hello():
-    return "Hello World!"
+@app.route('/')
+def index():
+    return chat().room()
 
-
-@app.route("/chat")
-def say():
-    return "Hello Say!"
+@app.route('/say/')
+@app.route('/say/<username>')
+def say_user(username=None):
+    return chat().say(username)
