@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block title %}{{ room }}{% endblock %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <h1>{{ room }}</h1>
+    <p class="important">
+    Welcome on my awesome {{ room }}.
+    </p>
+{% endblock %}

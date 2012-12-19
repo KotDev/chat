@@ -1,10 +1,20 @@
-class chat(object):
+from mongoengine import *
 
-    def room(self):
-        return 'room1'
+connect('db_chat')
 
-    def say(self, username=None):
-        return 'User %s' % username
+GENDER = (0, 'F', 'M')
 
-    def view(self, id = 0):
-        pass
+class User(Document):
+    login = StringField(required=True)
+    name = StringField(max_length=50)
+    gender = StringField(max_length=1, choices=GENDER)
+
+
+class Room(Document):
+    name = StringField(required=True)
+
+
+class RoomPost(Document):
+    msg = StringField(max_length=500, required=True)
+    #room = ReferenceField(Room)
+    author = ReferenceField(User)
